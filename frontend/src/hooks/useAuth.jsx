@@ -21,7 +21,8 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const res = await fetch('/api/auth/me', {
+          const API_BASE = import.meta.env.VITE_API_URL || '/api';
+          const res = await fetch(`${API_BASE}/auth/me`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           if (res.ok) {
@@ -42,7 +43,8 @@ export const AuthProvider = ({ children }) => {
 
   const signIn = async (email, password) => {
     try {
-      const res = await fetch('/api/auth/login', {
+      const API_BASE = import.meta.env.VITE_API_URL || '/api';
+      const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -78,7 +80,8 @@ export const AuthProvider = ({ children }) => {
 
   const signUp = async (email, password, displayName) => {
     try {
-      const res = await fetch('/api/auth/register', {
+      const API_BASE = import.meta.env.VITE_API_URL || '/api';
+      const res = await fetch(`${API_BASE}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, display_name: displayName })
