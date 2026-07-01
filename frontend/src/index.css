@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 40% 6%; /* Deep dark blue/purple */
+    --foreground: 0 0% 100%;
+
+    --card: 230 35% 10%; /* Slightly lighter than background */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 230 35% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Neon Purple/Blue accent */
+    --primary: 260 100% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 230 30% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 230 30% 15%;
+    --muted-foreground: 230 20% 70%;
+
+    --accent: 260 100% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 30% 18%;
+    --input: 230 30% 18%;
+    --ring: 260 100% 65%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Add a subtle global mesh gradient background */
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(103, 58, 255, 0.15), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(255, 58, 203, 0.1), transparent 25%);
+    background-attachment: fixed;
+  }
+}
+
+/* Glassmorphism utility classes */
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  .glass-card {
+    @apply bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-lg border border-white/10;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400;
+  }
+}
